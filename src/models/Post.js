@@ -10,13 +10,13 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: [true, "Post title is required"],
     trim: true,
-    minLength: [2, "Post title must be at least 2 characters"],
+    minlength: [2, "Post title must be at least 2 characters"],
   },
   content: {
     type: String,
     required: [true, "Post content is required"],
     trim: true,
-    minLength: [2, "Post content must be at least 2 characters"],
+    minlength: [2, "Post content must be at least 2 characters"],
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,

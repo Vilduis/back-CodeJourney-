@@ -52,7 +52,7 @@ const getCommentsByPostId = async (postId) => {
 const getCommentById = async (commentId) => {
   try {
     const comment = await Comment.findById(commentId)
-      .populate("author", "name email")
+      .populate("author", "name lastName")
       .populate("post", "title");
     if (!comment) {
       throw new Error("Comment not found");

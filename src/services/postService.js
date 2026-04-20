@@ -1,6 +1,5 @@
 const Post = require("../models/Post");
-const User = require("../models/User"); // Para obtener el autor si es necesario
-const Comment = require("../models/Comment"); // Si necesitas mostrar los comentarios
+const Comment = require("../models/Comment");
 
 // Crear un nuevo post
 const createPost = async (postData) => {

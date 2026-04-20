@@ -1,31 +1,24 @@
-// models/Comment.js
 const mongoose = require("mongoose");
 
 const commentSchema = new mongoose.Schema({
   content: {
     type: String,
-    required: [true, "El contenido del comentario es requerido"],
+    required: [true, "Comment content is required"],
     trim: true,
-    minLength: [2, "El contenido debe tener al menos 2 caracteres"],
+    minlength: [2, "Comment content must be at least 2 characters"],
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // Referencia al modelo 'User'
+    ref: "User",
     required: true,
   },
   post: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Post", // Referencia al modelo 'Post'
+    ref: "Post",
     required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
   },
 }, {
   timestamps: true,
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true }
 });
 
 const Comment = mongoose.model("Comment", commentSchema);
