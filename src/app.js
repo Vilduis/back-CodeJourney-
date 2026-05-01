@@ -5,6 +5,8 @@ const userRoutes = require("./routes/userRoutes"); // Rutas para usuarios
 const postRoutes = require("./routes/postRoutes"); // Rutas para posts
 const commentRoutes = require("./routes/commentRoutes"); // Rutas para comentarios
 const cors = require("cors"); // Habilitar CORS
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./config/swagger");
 
 // Cargar variables de entorno
 dotenv.config();
@@ -25,6 +27,9 @@ app.use(
 
 // Middleware para parsear JSON
 app.use(express.json());
+
+// Documentación Swagger
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Rutas de la API
 app.use("/api/users", userRoutes); // Rutas de usuarios
