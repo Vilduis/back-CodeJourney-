@@ -28,8 +28,18 @@ app.use(
 // Middleware para parsear JSON
 app.use(express.json());
 
-// Documentación Swagger
-app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// Documentación Swagger (assets desde CDN para compatibilidad con Vercel)
+app.use(
+  "/api/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    customCssUrl: "https://unpkg.com/swagger-ui-dist@5/swagger-ui.css",
+    customJs: [
+      "https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js",
+      "https://unpkg.com/swagger-ui-dist@5/swagger-ui-standalone-preset.js",
+    ],
+  })
+);
 
 // Rutas de la API
 app.use("/api/users", userRoutes); // Rutas de usuarios
